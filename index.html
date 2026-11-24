@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>인싸 지망생 테스트</title>
+<title>외향형 찐따 테스트</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
 :root{--paper:#fbf9f6;--card:#fffdfa;--ink:#282725;--muted:#77716d;--line:#e8e1dc;--pink:#e98fa3;--pink-soft:#f9e7eb;--sage:#aebdaf;--lav:#c9c1d9;--yellow:#f2df9e;--shadow:0 16px 48px rgba(55,43,36,.07)}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;line-height:1.65}
 button{font:inherit;cursor:pointer}.shell{width:min(100% - 36px,900px);margin:48px auto 80px}.topline{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:18px}.brandmark{font-weight:700;color:var(--ink);letter-spacing:.03em}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(24px,5vw,56px);position:relative;overflow:hidden}.scribble{position:absolute;width:110px;height:28px;border-top:3px solid var(--pink);border-radius:50%;transform:rotate(-8deg);opacity:.8}.scribble.one{top:30px;right:42px}.scribble.two{bottom:28px;left:42px;width:72px;transform:rotate(5deg)}
 .eyebrow{font-size:12px;letter-spacing:.15em;color:var(--muted);font-weight:700}.hero{text-align:center;padding:35px 0 22px}.hero h1{font-size:clamp(36px,7vw,64px);line-height:1.2;letter-spacing:-.07em;margin:15px 0 22px;font-weight:800}.hero h1 span{position:relative;z-index:0;white-space:nowrap}.hero h1 span:after{content:"";position:absolute;left:-2%;right:-2%;bottom:3px;height:13px;background:var(--pink-soft);z-index:-1;border-radius:50%;transform:rotate(-2deg)}.intro{font-size:14px;color:#5e5955;margin:0 auto 28px;max-width:520px}.subline{font-size:13px;color:var(--muted);margin-top:18px}.primary{border:0;border-radius:999px;background:var(--pink);color:#2c2223;padding:15px 34px;font-weight:800;box-shadow:0 5px 0 #d77d92;transition:.15s}.primary:hover{transform:translateY(-2px);box-shadow:0 7px 0 #d77d92}.primary:active{transform:translateY(2px);box-shadow:0 2px 0 #d77d92}.meta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:34px}.meta span:before{content:"·";color:var(--pink);font-weight:800;margin-right:9px}
-.hidden{display:none!important}.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}.progress{height:8px;background:#eee9e5;border-radius:20px;overflow:hidden;margin:14px 0 42px}.progress>div{height:100%;background:var(--pink);border-radius:20px;transition:width .25s}.qnum{font-size:12px;color:var(--muted);letter-spacing:.08em}.question{font-size:clamp(22px,4vw,31px);word-break:keep-all;line-height:1.5;letter-spacing:-.045em;text-align:center;max-width:650px;margin:0 auto 38px;min-height:100px;display:grid;place-items:center}.answers{display:grid;grid-template-columns:repeat(5,minmax(0, 1fr));gap:10px}.answer{min-height:92px;border:1px solid var(--line);border-radius:15px;background:#fffdfa;color:var(--ink);padding:12px 6px;display:flex;flex-direction:column;align-items:center;/*justify-content:center;*/gap:5px;transition:.15s}.answer strong{font-size:20px}.answer span{font-size:clamp(10px, 2.5vw, 14px);white-space:nowrap;color:var(--muted)}.answer:hover{border-color:var(--pink);background:#fff8fa}.answer.selected{border:1.5px solid var(--pink);background:var(--pink-soft)}.nav{display:flex;justify-content:space-between;margin-top:34px}.ghost{border:1px solid var(--line);background:transparent;border-radius:999px;padding:10px 20px;color:var(--muted)}.ghost:disabled{opacity:.35;cursor:not-allowed}
+.hidden{display:none!important}.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}.progress{height:8px;background:#eee9e5;border-radius:20px;overflow:hidden;margin:14px 0 42px}.progress>div{height:100%;background:var(--pink);border-radius:20px;transition:width .25s}.qnum{font-size:12px;color:var(--muted);letter-spacing:.08em}.question{font-size:clamp(22px,4vw,31px);line-height:1.5;letter-spacing:-.045em;text-align:center;max-width:650px;margin:0 auto 38px;min-height:100px;display:grid;place-items:center}.answers{display:grid;grid-template-columns:repeat(5,minmax(0, 1fr));gap:10px}.answer{min-height:92px;border:1px solid var(--line);border-radius:15px;background:#fffdfa;color:var(--ink);padding:12px 6px;display:flex;flex-direction:column;align-items:center;/*justify-content:center;*/gap:5px;transition:.15s}.answer strong{font-size:20px}.answer span{font-size:clamp(10px, 2.5vw, 14px);white-space:nowrap;color:var(--muted)}.answer:hover{border-color:var(--pink);background:#fff8fa}.answer.selected{border:1.5px solid var(--pink);background:var(--pink-soft)}.nav{display:flex;justify-content:space-between;margin-top:34px}.ghost{border:1px solid var(--line);background:transparent;border-radius:999px;padding:10px 20px;color:var(--muted)}.ghost:disabled{opacity:.35;cursor:not-allowed}
 .result-title{font-size:12px;color:var(--muted);letter-spacing:.12em;font-weight:700}.result-top{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin:22px 0 30px}.type-name{font-size:clamp(30px,5vw,46px);line-height:1.25;letter-spacing:-.06em;margin:12px 0}.type-tag{display:inline-block;background:var(--pink-soft);padding:3px 10px;border-radius:5px;font-size:12px;font-weight:700}.quote{font-size:16px;color:#5f5955}.radar-wrap{display:flex;justify-content:center;align-items:center}.radar{width:min(100%,300px);height:auto}.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.score{border:1px solid var(--line);border-radius:14px;padding:14px}.score-head{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}.bar{height:8px;background:#eeeae6;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px;background:var(--pink)}.section-title{font-size:17px;margin:32px 0 14px;letter-spacing:-.03em}.analysis{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fffdfa}.analysis p{margin:0;color:#625c57;font-size:14px}.analysis ul{padding-left:19px;margin:12px 0 0;color:#625c57;font-size:14px}.analysis li{margin:6px 0}.callout{margin-top:16px;padding:18px 20px;border-radius:14px;background:#fbf1f1;border:1px solid #f1d9df}.callout b{display:block;margin-bottom:5px}.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.result-actions button{flex:1;min-width:150px}.smallprint{font-size:11px;color:#928b85;margin-top:20px}
 
 .report-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
@@ -66,7 +66,7 @@ button{font:inherit;cursor:pointer}.shell{width:min(100% - 36px,900px);margin:48
     <i class="scribble one"></i><i class="scribble two"></i>
     <div class="hero">
       <div class="eyebrow">A LITTLE SELF-CHECK</div>
-      <h1>인싸 <span>지망생</span> 테스트</h1>
+      <h1>외향형 <span>찐따</span> 테스트</h1>
       <p class="intro">사람 만나는 건 좋은데,<br>가끔 나도 모르게 민폐를 끼치는 건 아닐까?<br>나의 사회생활 성향을 가볍게 점검해 보세요.</p>
       <button class="primary" id="start">내 사회생활 성향 분석하기　→</button>
       <div class="meta"><span>총 32문항</span><span>약 5분</span><span>10가지 결과 유형</span></div>
@@ -100,7 +100,7 @@ button{font:inherit;cursor:pointer}.shell{width:min(100% - 36px,900px);margin:48
     <h3 class="section-title">06. 관계를 더 편안하게 만드는 개선 가이드</h3><div class="guide-list" id="guides"></div>
     <div class="closing-note"><span class="closing-label">마지막으로, 당신에게</span><p id="closing"></p></div>
     <p class="smallprint">이 결과는 응답을 바탕으로 만든 자기성찰·엔터테인먼트 콘텐츠입니다. 심리학적으로 검증된 성격검사나 진단이 아니며, 실제 관계는 상황과 상대방에 따라 달라질 수 있습니다.</p>
-    <div class="result-actions"><button class="action-card" id="again"><span class="action-icon" aria-hidden="true">↻</span><span class="action-label">다시 테스트</span></button><button class="action-card" id="copy"><span class="action-icon share-icon" aria-hidden="true">↗</span><span class="action-label">공유하기</span></button></div>
+    <div class="result-actions"><button class="action-card" id="again"><span class="action-icon" aria-hidden="true">↻</span><span class="action-label">다시 테스트</span></button><button class="action-card" id="saveImage"><span class="action-icon" aria-hidden="true">↓</span><span class="action-label">이미지 저장</span></button><button class="action-card" id="copy"><span class="action-icon share-icon" aria-hidden="true">↗</span><span class="action-label">이미지 공유</span></button></div>
   </section>
 </main>
 <script>
@@ -407,14 +407,74 @@ $("homeBtn").onclick=()=>show("home");
 $("prev").onclick=()=>{if(current>0){current--;renderQuestion();}};
 $("next").onclick=()=>{if(answers[current]===null)return;if(current<31){current++;renderQuestion();}else finish();};
 $("again").onclick=()=>show("home");
+async function makeResultImage(){
+ const canvas=document.createElement("canvas");
+ canvas.width=1080; canvas.height=1350;
+ const ctx=canvas.getContext("2d");
+ const s=finalData.s, type=finalData.type;
+ const bg=ctx.createLinearGradient(0,0,1080,1350);
+ bg.addColorStop(0,"#fffaf7"); bg.addColorStop(1,"#f8e9eb");
+ ctx.fillStyle=bg; ctx.fillRect(0,0,1080,1350);
+ // paper card
+ ctx.fillStyle="#fffdfa"; ctx.beginPath(); ctx.roundRect(62,62,956,1226,42); ctx.fill();
+ ctx.strokeStyle="#eadfda"; ctx.lineWidth=3; ctx.stroke();
+ // decorative accents
+ ctx.fillStyle="#f9e7eb"; ctx.beginPath(); ctx.arc(910,180,78,0,Math.PI*2); ctx.fill();
+ ctx.fillStyle="#e98fa3"; ctx.beginPath(); ctx.arc(945,145,18,0,Math.PI*2); ctx.fill();
+ ctx.textAlign="center";
+ ctx.fillStyle="#9b6874"; ctx.font="700 25px 'Noto Sans KR', sans-serif";
+ ctx.fillText("MY SOCIAL PROFILE  ·  PERSONALITY TEST",540,160);
+ ctx.fillStyle="#282725"; ctx.font="800 76px 'Noto Sans KR', sans-serif";
+ ctx.fillText(type.name,540,330);
+ ctx.fillStyle="#a95f72"; ctx.font="600 31px 'Noto Sans KR', sans-serif";
+ const quote=type.quote || "나의 사회생활 성향을 확인해 보세요.";
+ function drawWrapped(text,x,y,maxWidth,lineHeight,font,color){
+  ctx.font=font; ctx.fillStyle=color; const words=[...text]; let line="", yy=y;
+  for(const ch of words){ const test=line+ch; if(ctx.measureText(test).width>maxWidth && line){ctx.fillText(line,x,yy); line=ch; yy+=lineHeight;} else line=test; }
+  if(line)ctx.fillText(line,x,yy); return yy;
+ }
+ drawWrapped(quote,540,405,820,48,"600 31px 'Noto Sans KR', sans-serif","#655b57");
+ // roast panel
+ ctx.fillStyle="#fbf1f1"; ctx.beginPath(); ctx.roundRect(130,505,820,150,24); ctx.fill();
+ ctx.fillStyle="#9b6874"; ctx.font="700 22px 'Noto Sans KR', sans-serif"; ctx.fillText("한 줄 요약",540,552);
+ drawWrapped($("roast").textContent,540,600,740,38,"500 25px 'Noto Sans KR', sans-serif","#514a46");
+ // scores
+ ctx.textAlign="left"; ctx.fillStyle="#282725"; ctx.font="700 31px 'Noto Sans KR', sans-serif"; ctx.fillText("나의 사회생활 프로필",150,745);
+ const dims=[["외향성",s.ext],["대화 습관",s.conv],["사회적 눈치",s.aw],["관계 경험",s.fr],["자기인식",s.self]];
+ dims.forEach(([name,val],i)=>{
+  const col=i%2, row=Math.floor(i/2), x=150+col*420, y=805+row*125;
+  ctx.fillStyle="#625c57"; ctx.font="600 24px 'Noto Sans KR', sans-serif"; ctx.fillText(name,x,y);
+  ctx.textAlign="right"; ctx.fillStyle="#a95f72"; ctx.font="700 24px 'Noto Sans KR', sans-serif"; ctx.fillText(`${val}점`,x+350,y); ctx.textAlign="left";
+  ctx.fillStyle="#eee5e2"; ctx.beginPath(); ctx.roundRect(x,y+22,350,16,8); ctx.fill();
+  ctx.fillStyle="#e98fa3"; ctx.beginPath(); ctx.roundRect(x,y+22,350*val/100,16,8); ctx.fill();
+ });
+ ctx.textAlign="center"; ctx.fillStyle="#9b6874"; ctx.font="700 24px 'Noto Sans KR', sans-serif";
+ ctx.fillText("외향형 찐따 테스트",540,1195);
+ ctx.fillStyle="#928b85"; ctx.font="400 19px 'Noto Sans KR', sans-serif";
+ ctx.fillText("정답은 없습니다. 나를 가볍게 알아보는 시간.",540,1235);
+ return new Promise(resolve=>canvas.toBlob(resolve,"image/png"));
+}
+function downloadResultImage(blob){
+ const url=URL.createObjectURL(blob); const a=document.createElement("a");
+ a.href=url; a.download="외향형-찐따-테스트-결과.png"; document.body.appendChild(a); a.click(); a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$("saveImage").onclick=async()=>{
+ const blob=await makeResultImage();
+ if(!blob){alert("이미지 생성에 실패했습니다. 다시 시도해 주세요.");return;}
+ downloadResultImage(blob);
+};
 $("copy").onclick=async()=>{
- const shareData={title:"외향형 찐따 테스트 결과",text:`나의 사회생활 유형은 '${finalData.type.name}'! ${finalData.type.quote}\n\n외향형 찐따 테스트에서 내 결과를 확인해 보세요.`,url:location.href};
- if(navigator.share){
+ const blob=await makeResultImage();
+ if(!blob){alert("이미지 생성에 실패했습니다. 다시 시도해 주세요.");return;}
+ const file=new File([blob],"외향형-찐따-테스트-결과.png",{type:"image/png"});
+ const shareData={title:"외향형 찐따 테스트 결과",text:`나의 사회생활 유형은 '${finalData.type.name}'! ${finalData.type.quote}`,files:[file]};
+ if(navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){
   try{await navigator.share(shareData);return;}catch(e){if(e.name==="AbortError")return;}
  }
- try{await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);$("copy").setAttribute("aria-label","공유 링크가 복사되었습니다.");}
- catch(e){$("copy").setAttribute("aria-label","주소창의 링크를 복사해 주세요.");}
-}
+ downloadResultImage(blob);
+ alert("이 기기에서는 이미지 공유를 바로 지원하지 않아 결과 이미지를 저장했습니다. 저장된 이미지를 첨부해 공유해 주세요.");
+};
 </script>
 </body>
 </html>
