@@ -100,10 +100,7 @@ button{font:inherit;cursor:pointer}.shell{width:min(100% - 36px,900px);margin:48
     <h3 class="section-title">06. 관계를 더 편안하게 만드는 개선 가이드</h3><div class="guide-list" id="guides"></div>
     <div class="closing-note"><span class="closing-label">마지막으로, 당신에게</span><p id="closing"></p></div>
     <p class="smallprint">이 결과는 응답을 바탕으로 만든 자기성찰·엔터테인먼트 콘텐츠입니다. 심리학적으로 검증된 성격검사나 진단이 아니며, 실제 관계는 상황과 상대방에 따라 달라질 수 있습니다.</p>
-    <div class="result-actions">
-      <button class="action-card" id="again"><span class="action-icon" aria-hidden="true">↻</span><span class="action-label">다시 테스트</span></button>
-      <button class="action-card" id="shareResult"><span class="action-icon share-icon" aria-hidden="true">↗</span><span class="action-label">내 결과 페이지 공유</span></button>
-    </div>
+    <div class="result-actions"><button class="action-card" id="again"><span class="action-icon" aria-hidden="true">↻</span><span class="action-label">다시 테스트</span></button><button class="action-card" id="saveImage"><span class="action-icon" aria-hidden="true">↓</span><span class="action-label">이미지 저장</span></button><button class="action-card" id="copy"><span class="action-icon share-icon" aria-hidden="true">↗</span><span class="action-label">이미지 공유</span></button></div>
   </section>
 </main>
 <script>
@@ -410,40 +407,74 @@ $("homeBtn").onclick=()=>show("home");
 $("prev").onclick=()=>{if(current>0){current--;renderQuestion();}};
 $("next").onclick=()=>{if(answers[current]===null)return;if(current<31){current++;renderQuestion();}else finish();};
 $("again").onclick=()=>show("home");
-
-$("shareResult").onclick=async()=>{
-  const encodedAnswers=answers.join("");
-  const shareUrl=new URL(location.href);
-  shareUrl.search="";
-  shareUrl.hash="";
-  shareUrl.searchParams.set("result",encodedAnswers);
-
-  const shareData={
-    title:"나의 사회생활 성향 테스트 결과",
-    text:`나의 사회생활 유형은 '${finalData.type.name}'! 내 상세 결과를 확인해 보세요.`,
-    url:shareUrl.toString()
-  };
-
-  if(navigator.share){
-    try{await navigator.share(shareData);return;}
-    catch(e){if(e.name==="AbortError")return;}
-  }
-
-  try{
-    await navigator.clipboard.writeText(shareUrl.toString());
-    alert("내 결과 페이지 링크를 복사했습니다. 친구에게 공유해 보세요!");
-  }catch(e){
-    prompt("아래 링크를 복사해서 공유해 주세요.",shareUrl.toString());
-  }
-};
-
-// 공유 링크로 접속하면 답변을 복원해 동일한 상세 결과 페이지를 표시합니다.
-const sharedAnswers=new URLSearchParams(location.search).get("result");
-if(sharedAnswers && /^[1-5]{32}$/.test(sharedAnswers)){
-  answers=Array.from(sharedAnswers,Number);
-  finish();
+async function makeResultImage(){
+ const canvas=document.createElement("canvas");
+ canvas.width=1080; canvas.height=1350;
+ const ctx=canvas.getContext("2d");
+ const s=finalData.s, type=finalData.type;
+ const bg=ctx.createLinearGradient(0,0,1080,1350);
+ bg.addColorStop(0,"#fffaf7"); bg.addColorStop(1,"#f8e9eb");
+ ctx.fillStyle=bg; ctx.fillRect(0,0,1080,1350);
+ // paper card
+ ctx.fillStyle="#fffdfa"; ctx.beginPath(); ctx.roundRect(62,62,956,1226,42); ctx.fill();
+ ctx.strokeStyle="#eadfda"; ctx.lineWidth=3; ctx.stroke();
+ // decorative accents
+ ctx.fillStyle="#f9e7eb"; ctx.beginPath(); ctx.arc(910,180,78,0,Math.PI*2); ctx.fill();
+ ctx.fillStyle="#e98fa3"; ctx.beginPath(); ctx.arc(945,145,18,0,Math.PI*2); ctx.fill();
+ ctx.textAlign="center";
+ ctx.fillStyle="#9b6874"; ctx.font="700 25px 'Noto Sans KR', sans-serif";
+ ctx.fillText("MY SOCIAL PROFILE  ·  PERSONALITY TEST",540,160);
+ ctx.fillStyle="#282725"; ctx.font="800 76px 'Noto Sans KR', sans-serif";
+ ctx.fillText(type.name,540,330);
+ ctx.fillStyle="#a95f72"; ctx.font="600 31px 'Noto Sans KR', sans-serif";
+ const quote=type.quote || "나의 사회생활 성향을 확인해 보세요.";
+ function drawWrapped(text,x,y,maxWidth,lineHeight,font,color){
+  ctx.font=font; ctx.fillStyle=color; const words=[...text]; let line="", yy=y;
+  for(const ch of words){ const test=line+ch; if(ctx.measureText(test).width>maxWidth && line){ctx.fillText(line,x,yy); line=ch; yy+=lineHeight;} else line=test; }
+  if(line)ctx.fillText(line,x,yy); return yy;
+ }
+ drawWrapped(quote,540,405,820,48,"600 31px 'Noto Sans KR', sans-serif","#655b57");
+ // roast panel
+ ctx.fillStyle="#fbf1f1"; ctx.beginPath(); ctx.roundRect(130,505,820,150,24); ctx.fill();
+ ctx.fillStyle="#9b6874"; ctx.font="700 22px 'Noto Sans KR', sans-serif"; ctx.fillText("한 줄 요약",540,552);
+ drawWrapped($("roast").textContent,540,600,740,38,"500 25px 'Noto Sans KR', sans-serif","#514a46");
+ // scores
+ ctx.textAlign="left"; ctx.fillStyle="#282725"; ctx.font="700 31px 'Noto Sans KR', sans-serif"; ctx.fillText("나의 사회생활 프로필",150,745);
+ const dims=[["외향성",s.ext],["대화 습관",s.conv],["사회적 눈치",s.aw],["관계 경험",s.fr],["자기인식",s.self]];
+ dims.forEach(([name,val],i)=>{
+  const col=i%2, row=Math.floor(i/2), x=150+col*420, y=805+row*125;
+  ctx.fillStyle="#625c57"; ctx.font="600 24px 'Noto Sans KR', sans-serif"; ctx.fillText(name,x,y);
+  ctx.textAlign="right"; ctx.fillStyle="#a95f72"; ctx.font="700 24px 'Noto Sans KR', sans-serif"; ctx.fillText(`${val}점`,x+350,y); ctx.textAlign="left";
+  ctx.fillStyle="#eee5e2"; ctx.beginPath(); ctx.roundRect(x,y+22,350,16,8); ctx.fill();
+  ctx.fillStyle="#e98fa3"; ctx.beginPath(); ctx.roundRect(x,y+22,350*val/100,16,8); ctx.fill();
+ });
+ ctx.textAlign="center"; ctx.fillStyle="#9b6874"; ctx.font="700 24px 'Noto Sans KR', sans-serif";
+ ctx.fillText("외향형 찐따 테스트",540,1195);
+ ctx.fillStyle="#928b85"; ctx.font="400 19px 'Noto Sans KR', sans-serif";
+ ctx.fillText("정답은 없습니다. 나를 가볍게 알아보는 시간.",540,1235);
+ return new Promise(resolve=>canvas.toBlob(resolve,"image/png"));
 }
-
+function downloadResultImage(blob){
+ const url=URL.createObjectURL(blob); const a=document.createElement("a");
+ a.href=url; a.download="외향형-찐따-테스트-결과.png"; document.body.appendChild(a); a.click(); a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$("saveImage").onclick=async()=>{
+ const blob=await makeResultImage();
+ if(!blob){alert("이미지 생성에 실패했습니다. 다시 시도해 주세요.");return;}
+ downloadResultImage(blob);
+};
+$("copy").onclick=async()=>{
+ const blob=await makeResultImage();
+ if(!blob){alert("이미지 생성에 실패했습니다. 다시 시도해 주세요.");return;}
+ const file=new File([blob],"외향형-찐따-테스트-결과.png",{type:"image/png"});
+ const shareData={title:"외향형 찐따 테스트 결과",text:`나의 사회생활 유형은 '${finalData.type.name}'! ${finalData.type.quote}`,files:[file]};
+ if(navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){
+  try{await navigator.share(shareData);return;}catch(e){if(e.name==="AbortError")return;}
+ }
+ downloadResultImage(blob);
+ alert("이 기기에서는 이미지 공유를 바로 지원하지 않아 결과 이미지를 저장했습니다. 저장된 이미지를 첨부해 공유해 주세요.");
+};
 </script>
 </body>
 </html>
